@@ -24,7 +24,7 @@ main {
   display: flex;
   flex-direction: row-reverse;
   gap: 1.5rem;
-  height: calc(100vh - 4rem);
+  height: calc(100svh - 4rem);
   justify-content: center;
   margin: 2rem auto;
   width: max(10rem, 25%);
