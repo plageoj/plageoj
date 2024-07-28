@@ -51,7 +51,7 @@ footer {
 
   li {
     list-style: none;
-    margin: 1rex 2rem;
+    margin: .75rem max(1rem, 2vw) 0 0;
 
     a {
       color: inherit;
