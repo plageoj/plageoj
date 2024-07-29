@@ -13,7 +13,8 @@
   "watch": {
     "compile": {
       "patterns": [
-        "src"
+        "src",
+        "songs.txt"
       ],
       "extensions": "*"
     }
