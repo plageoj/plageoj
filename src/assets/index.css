@@ -54,6 +54,7 @@ aside {
 
   ul {
     padding: 0 max(1rem, 2vw);
+    width: fit-content;
 
     li {
       list-style: none;
@@ -66,8 +67,8 @@ aside {
         color: inherit;
         cursor: pointer;
         display: block;
-        margin: 0;
         overflow: hidden;
+        padding: 0;
         text-decoration: none;
 
         ion-icon,
