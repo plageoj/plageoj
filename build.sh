@@ -13,17 +13,17 @@ total_lines=$(wc -l < songs.txt)
 line_number=1
 while IFS= read -r line; do
   # Calculate previous and next page numbers
-  prev=$((line_number - 1))
-  next=$((line_number + 1))
+  prev=$((line_number + 1))
+  next=$((line_number - 1))
 
   # Handle edge cases
   prev_link=""
-  if [ $prev -ge 1 ]; then
+  if [ $prev -le $total_lines ]; then
     prev_link="<a href=\"$prev.html\" class=\"nav-link prev-link\"><ion-icon name=\"arrow-back\"></ion-icon></a>"
   fi
 
   next_link=""
-  if [ $next -le $total_lines ]; then
+  if [ $next -ge 1 ]; then
     next_link="<a href=\"$next.html\" class=\"nav-link next-link\"><ion-icon name=\"arrow-forward\"></ion-icon></a>"
   fi
 
@@ -38,4 +38,4 @@ done < songs.txt
 
 echo "Processed $total_lines entries"
 # Create index.html that redirects to the latest entry
-cp dist/$total_lines.html dist/index.html
+cp dist/1.html dist/index.html
