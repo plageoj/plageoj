@@ -10,20 +10,21 @@ cp -r src/assets dist/
 total_lines=$(wc -l < songs.txt)
 
 # Process each line in songs.txt and create a separate HTML file
-line_number=1
+line_number=$total_lines
 while IFS= read -r line; do
   # Calculate previous and next page numbers
-  prev=$((line_number + 1))
-  next=$((line_number - 1))
+  prev=$((line_number - 1))
+  next=$((line_number + 1))
 
   # Handle edge cases
   prev_link=""
-  if [ $prev -le $total_lines ]; then
+  if [ $prev -ge 1 ]; then
     prev_link="<a href=\"$prev.html\" class=\"nav-link prev-link\"><ion-icon name=\"arrow-back\"></ion-icon></a>"
   fi
 
   next_link=""
-  if [ $next -ge 1 ]; then
+
+  if [ $next -le $total_lines ]; then
     next_link="<a href=\"$next.html\" class=\"nav-link next-link\"><ion-icon name=\"arrow-forward\"></ion-icon></a>"
   fi
 
@@ -33,9 +34,9 @@ while IFS= read -r line; do
       -e "s;%NEXT_LINK%;$next_link;g" \
       src/index.html > "dist/$line_number.html"
 
-  line_number=$((line_number + 1))
+  line_number=$((line_number - 1))
 done < songs.txt
 
 echo "Processed $total_lines entries"
 # Create index.html that redirects to the latest entry
-cp dist/1.html dist/index.html
+cp dist/$total_lines.html dist/index.html
