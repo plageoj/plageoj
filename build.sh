@@ -28,8 +28,12 @@ while IFS= read -r line; do
     next_link="<a href=\"$next.html\" class=\"nav-link next-link\"><ion-icon name=\"arrow-forward\"></ion-icon></a>"
   fi
 
+  plain_line=$(echo $line | sed 's/<[^>]*>//g')
+
   # Replace placeholders in the template
-  sed -e "s;%MAIN_CONTENT%;$line;g" \
+  sed -e "s;%PLAIN_MAIN_CONTENT%;$plain_line;g" \
+      -e "s;%MAIN_CONTENT%;$line;g" \
+      -e "s;%NUMBER%;$line_number;g" \
       -e "s;%PREV_LINK%;$prev_link;g" \
       -e "s;%NEXT_LINK%;$next_link;g" \
       src/index.html > "dist/$line_number.html"

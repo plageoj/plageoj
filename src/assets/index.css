@@ -36,13 +36,18 @@ main {
     padding: calc(max(2rem, 30%) + 4rem) 0 max(2rem, 30%) 0;
     text-indent: -4rem;
     writing-mode: vertical-rl;
-    font-family: serif;
+    font-family: "Shippori Mincho", serif;
     white-space: pre-wrap;
     word-break: keep-all;
 
     &#name {
       align-self: flex-end;
     }
+  }
+
+  #number {
+    position: absolute;
+    bottom: 2.5rem;
   }
 }
 
