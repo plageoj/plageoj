@@ -17,15 +17,20 @@ while IFS= read -r line; do
   next=$((line_number + 1))
 
   # Handle edge cases
+  prev_prefetch=""
   prev_link=""
+
   if [ $prev -ge 1 ]; then
-    prev_link="<a href=\"$prev.html\" class=\"nav-link prev-link\"><ion-icon name=\"arrow-back\"></ion-icon></a>"
+    prev_prefetch="<link rel=\"prefetch\" href=\"$prev.html\" />"
+    prev_link="<a href=\"$prev.html\"><ion-icon name=\"arrow-back\"></ion-icon></a>"
   fi
 
+  next_prefetch=""
   next_link=""
 
   if [ $next -le $total_lines ]; then
-    next_link="<a href=\"$next.html\" class=\"nav-link next-link\"><ion-icon name=\"arrow-forward\"></ion-icon></a>"
+    next_prefetch="<link rel=\"prefetch\" href=\"$next.html\" />"
+    next_link="<a href=\"$next.html\"><ion-icon name=\"arrow-forward\"></ion-icon></a>"
   fi
 
   plain_line=$(echo $line | sed 's/<[^>]*>//g')
@@ -34,7 +39,9 @@ while IFS= read -r line; do
   sed -e "s;%PLAIN_MAIN_CONTENT%;$plain_line;g" \
       -e "s;%MAIN_CONTENT%;$line;g" \
       -e "s;%NUMBER%;$line_number;g" \
+      -e "s;%PREV_PREFETCH%;$prev_prefetch;g" \
       -e "s;%PREV_LINK%;$prev_link;g" \
+      -e "s;%NEXT_PREFETCH%;$next_prefetch;g" \
       -e "s;%NEXT_LINK%;$next_link;g" \
       src/index.html > "dist/$line_number.html"
 
