@@ -51,3 +51,8 @@ done < songs.txt
 echo "Processed $total_lines entries"
 # Create index.html that redirects to the latest entry
 cp dist/$total_lines.html dist/index.html
+
+# run subfont on CI
+if [ -n "$CI" ]; then
+  npx -y subfont dist/ -i --no-fallbacks
+fi
