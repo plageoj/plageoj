@@ -2,6 +2,8 @@
 
 if [ ! -d dist ]; then
   mkdir dist
+else
+  rm -rf dist/*
 fi
 
 cp -r src/assets dist/
@@ -54,5 +56,5 @@ cp dist/$total_lines.html dist/index.html
 
 # run subfont on CI
 if [ -n "$CI" ]; then
-  npx -y subfont dist/ -i --no-fallbacks
+  npx -y subfont dist/*.html -i --no-fallbacks
 fi
