@@ -1,5 +1,6 @@
 #! /bin/bash
 
+# Prepare the build distribution directory
 if [ ! -d dist ]; then
   mkdir dist
 else

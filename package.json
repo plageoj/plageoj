@@ -1,22 +1,22 @@
 {
-  "devDependencies": {
-    "http-server": "^14.1.1",
-    "npm-run-all": "^4.1.5",
-    "npm-watch": "^0.13.0"
-  },
-  "scripts": {
-    "serve": "http-server dist",
-    "compile": "zsh build.sh",
-    "watch": "npm-watch",
-    "start": "run-p watch serve"
-  },
-  "watch": {
-    "compile": {
-      "patterns": [
-        "src",
-        "songs.txt"
-      ],
-      "extensions": "*"
+    "devDependencies": {
+        "http-server": "^14.1.1",
+        "npm-run-all": "^4.1.5",
+        "npm-watch": "^0.13.0"
+    },
+    "scripts": {
+        "serve": "http-server dist",
+        "compile": "bash build-index.sh",
+        "watch": "npm-watch",
+        "start": "run-p watch serve"
+    },
+    "watch": {
+        "compile": {
+            "patterns": [
+                "src",
+                "songs.txt"
+            ],
+            "extensions": "*"
+        }
     }
-  }
 }
