@@ -1,12 +1,14 @@
 {
     "devDependencies": {
         "http-server": "^14.1.1",
-        "npm-run-all": "^4.1.5",
+        "npm-run-all2": "^8.0.4",
         "npm-watch": "^0.13.0"
     },
     "scripts": {
         "serve": "http-server dist",
-        "compile": "bash build-index.sh",
+        "build:index": "bash build-index.sh",
+        "build:atom": "bash build-atom.sh",
+        "compile": "run-s build:index build:atom",
         "watch": "npm-watch",
         "start": "run-p watch serve"
     },

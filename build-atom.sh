@@ -6,14 +6,15 @@ function removetag() {
 
 cat << EOH > dist/atom.xml
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/assets/atom.xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>plageoj の最近の短歌</title>
-    <link href="https://plageoj.me" rel="self"/>
+    <link href="https://plageoj.me/atom.xml" rel="self"/>
     <updated>$(date -u +%Y-%m-%dT%H:%M:%SZ)</updated>
-    <id>https://plageoj.me</id>
+    <id>https://plageoj.me/</id>
     <author>
         <name>Masayuki Sugahara</name>
-        <url>https://plageoj.me</url>
+        <uri>https://plageoj.me</uri>
     </author>
 EOH
 
