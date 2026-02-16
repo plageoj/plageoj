@@ -36,6 +36,7 @@ while IFS= read -r line; do
     next_link="<a href=\"$next.html\"><ion-icon name=\"arrow-forward\"></ion-icon></a>"
   fi
 
+  updated_at=$(date -u -d @$(git blame -L $line_number,$line_number --porcelain songs.txt | grep '^author-time' | cut -d' ' -f2) +'%Y-%m-%d')
   plain_line=$(echo $line | sed 's/<[^>]*>//g')
 
   # Replace placeholders in the template
@@ -46,6 +47,7 @@ while IFS= read -r line; do
       -e "s;%PREV_LINK%;$prev_link;g" \
       -e "s;%NEXT_PREFETCH%;$next_prefetch;g" \
       -e "s;%NEXT_LINK%;$next_link;g" \
+      -e "s;%UPDATED_AT%;$updated_at;g" \
       src/index.html > "dist/$line_number.html"
 
   line_number=$((line_number - 1))

@@ -15,6 +15,16 @@
 body {
   background-color: var(--body-bg-color);
   color: var(--text-color);
+  font-family: "Shippori Mincho", serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header {
+  margin-left: 1rem;
 }
 
 main {
@@ -30,24 +40,55 @@ main {
   width: max(10rem, 25%);
 
   p {
-    letter-spacing: 1px;
-    line-height: 1.75rem;
-    margin: 0;
     padding: calc(max(2rem, 30%) + 4rem) 0 max(2rem, 30%) 0;
     text-indent: -4rem;
-    writing-mode: vertical-rl;
-    font-family: "Shippori Mincho", serif;
-    white-space: pre-wrap;
-    word-break: keep-all;
-
-    &#name {
-      align-self: flex-end;
-    }
   }
 
   #number {
     position: absolute;
     bottom: 2.5rem;
+  }
+}
+
+main,
+section {
+  height: calc(100svh - 4rem);
+
+  p,
+  h1 {
+    letter-spacing: 1px;
+    line-height: 1.75rem;
+    margin: 0;
+    writing-mode: vertical-rl;
+    word-break: keep-all;
+
+    &#name {
+      align-self: flex-end;
+      text-align: right;
+    }
+  }
+}
+
+section {
+  writing-mode: vertical-rl;
+}
+
+article {
+  height: max(80%, 40rem);
+  p {
+    display: flex;
+    height: 100%;
+    gap: 2rem;
+  }
+
+  a {
+    flex-grow: 1;
+  }
+
+  #number {
+    display: inline-block;
+    text-align: right;
+    height: 6rem;
   }
 }
 
@@ -81,7 +122,6 @@ aside {
         align-items: center;
         overflow: hidden;
         padding: 0;
-        text-decoration: none;
         height: 100%;
 
         ion-icon,

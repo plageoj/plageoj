@@ -16,6 +16,7 @@
         "compile": {
             "patterns": [
                 "src",
+                "*.sh",
                 "songs.txt"
             ],
             "extensions": "*"

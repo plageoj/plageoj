@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head>
     <title>%PLAIN_MAIN_CONTENT% - plageoj</title>
@@ -9,17 +9,19 @@
     <link rel="stylesheet" href="assets/index.css" />
     <script
       type="module"
-      src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"
+      src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"
     ></script>
     <script
       nomodule=""
-      src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"
+      src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"
     ></script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="author" content="Masayuki Sugahara" />
     <meta property="og:type" content="website" />
+    <meta property="og:title" content="%PLAIN_MAIN_CONTENT%" />
     <meta property="og:url" content="https://plagoej.me/%NUMBER%.html" />
     <meta property="og:site_name" content="plageoj" />
-    <meta property="og:description" content="#%NUMBER%" />
+    <meta property="og:description" content="%UPDATED_AT% #%NUMBER%" />
     <link
       rel="alternate"
       type="application/atom+xml"
@@ -31,7 +33,10 @@
   <body>
     <main>
       <p>%MAIN_CONTENT%</p>
-      <p id="name">ぺんた (@plageoj)</p>
+      <p id="name">
+        <date>%UPDATED_AT%</date>
+        ぺんた (@plageoj)
+      </p>
       <span id="number">#%NUMBER%</span>
     </main>
 
@@ -54,9 +59,9 @@
         </li>
         <li>
           <button
-            onclick="navigator.share({url: location.href, title: 'plageoj'})"
+            onclick="navigator.share({ url: location.href, title: 'plageoj' })"
           >
-            <ion-icon name="share"></ion-icon>
+            <ion-icon name="share-social"></ion-icon>
           </button>
         </li>
       </ul>
