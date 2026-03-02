@@ -36,7 +36,7 @@ while IFS= read -r line; do
     next_link="<a href=\"$next.html\"><ion-icon name=\"arrow-forward\"></ion-icon></a>"
   fi
 
-  updated_at=$(date -u -d @$(git blame -L $line_number,$line_number --porcelain songs.txt | grep '^committer-time' | cut -d' ' -f2) +'%Y-%m-%d')
+  updated_at=$(date -u -d @$(git blame -L $line_number,$line_number --porcelain songs.txt | grep '^committer-time' | cut -d' ' -f2) +'%Y-%m-%dT%H:%M:%SZ')
   plain_line=$(echo $line | sed 's/<[^>]*>//g')
 
   # Replace placeholders in the template
