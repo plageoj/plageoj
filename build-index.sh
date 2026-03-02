@@ -13,11 +13,13 @@ cp -r src/assets dist/
 total_lines=$(wc -l < songs.txt)
 
 # Process each line in songs.txt and create a separate HTML file
-line_number=$total_lines
+file_index=$total_lines
+line_number=1
+
 while IFS= read -r line; do
   # Calculate previous and next page numbers
-  prev=$((line_number - 1))
-  next=$((line_number + 1))
+  prev=$((file_index - 1))
+  next=$((file_index + 1))
 
   # Handle edge cases
   prev_prefetch=""
@@ -36,21 +38,22 @@ while IFS= read -r line; do
     next_link="<a href=\"$next.html\"><ion-icon name=\"arrow-forward\"></ion-icon></a>"
   fi
 
-  updated_at=$(date -u -d @$(git blame -L $line_number,$line_number --porcelain songs.txt | grep '^committer-time' | cut -d' ' -f2) +'%Y-%m-%dT%H:%M:%SZ')
+  updated_at=$(date -u -d @$(git blame -L $line_number,$line_number --porcelain songs.txt | grep '^committer-time' | cut -d' ' -f2) +'%Y-%m-%d')
   plain_line=$(echo $line | sed 's/<[^>]*>//g')
 
   # Replace placeholders in the template
   sed -e "s;%PLAIN_MAIN_CONTENT%;$plain_line;g" \
       -e "s;%MAIN_CONTENT%;$line;g" \
-      -e "s;%NUMBER%;$line_number;g" \
+      -e "s;%NUMBER%;$file_index;g" \
       -e "s;%PREV_PREFETCH%;$prev_prefetch;g" \
       -e "s;%PREV_LINK%;$prev_link;g" \
       -e "s;%NEXT_PREFETCH%;$next_prefetch;g" \
       -e "s;%NEXT_LINK%;$next_link;g" \
       -e "s;%UPDATED_AT%;$updated_at;g" \
-      src/index.html > "dist/$line_number.html"
+      src/index.html > "dist/$file_index.html"
 
-  line_number=$((line_number - 1))
+  file_index=$((file_index - 1))
+  line_number=$((line_number + 1))
 done < songs.txt
 
 echo "Processed $total_lines entries"
