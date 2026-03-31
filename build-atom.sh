@@ -18,12 +18,12 @@ cat << EOH > dist/atom.xml
   </author>
 EOH
 
-file_index=$(wc -l < songs.txt)
+file_index=$(wc -l < poems.txt)
 line_number=1
 
 while IFS= read -r line; do
   parsed_line=$(echo "$line" | removetag)
-  updated_at=$(date -u -d @$(git blame -L $line_number,$line_number --porcelain songs.txt | grep '^committer-time' | cut -d' ' -f2) +'%Y-%m-%dT%H:%M:%SZ')
+  updated_at=$(date -u -d @$(git blame -L $line_number,$line_number --porcelain poems.txt | grep '^committer-time' | cut -d' ' -f2) +'%Y-%m-%dT%H:%M:%SZ')
 
   cat << EOE >> dist/atom.xml
   <entry>
@@ -37,6 +37,6 @@ EOE
 
   file_index=$((file_index - 1))
   line_number=$((line_number + 1))
-done < songs.txt
+done < poems.txt
 
 echo "</feed>" >> dist/atom.xml

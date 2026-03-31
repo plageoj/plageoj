@@ -9,10 +9,10 @@ fi
 
 cp -r src/assets dist/
 
-# Count total lines in songs.txt
-total_lines=$(wc -l < songs.txt)
+# Count total lines in poems.txt
+total_lines=$(wc -l < poems.txt)
 
-# Process each line in songs.txt and create a separate HTML file
+# Process each line in poems.txt and create a separate HTML file
 file_index=$total_lines
 line_number=1
 
@@ -38,7 +38,7 @@ while IFS= read -r line; do
     next_link="<a href=\"$next.html\"><ion-icon name=\"arrow-forward\"></ion-icon></a>"
   fi
 
-  updated_at=$(date -u -d @$(git blame -L $line_number,$line_number --porcelain songs.txt | grep '^committer-time' | cut -d' ' -f2) +'%Y-%m-%d')
+  updated_at=$(date -u -d @$(git blame -L $line_number,$line_number --porcelain poems.txt | grep '^committer-time' | cut -d' ' -f2) +'%Y-%m-%d')
   plain_line=$(echo $line | sed 's/<[^>]*>//g')
 
   # Replace placeholders in the template
@@ -54,7 +54,7 @@ while IFS= read -r line; do
 
   file_index=$((file_index - 1))
   line_number=$((line_number + 1))
-done < songs.txt
+done < poems.txt
 
 echo "Processed $total_lines entries"
 # Create index.html that redirects to the latest entry

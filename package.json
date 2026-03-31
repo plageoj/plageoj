@@ -1,25 +1,25 @@
 {
-    "devDependencies": {
-        "http-server": "^14.1.1",
-        "npm-run-all2": "^8.0.4",
-        "npm-watch": "^0.13.0"
-    },
-    "scripts": {
-        "serve": "http-server dist",
-        "build:index": "bash build-index.sh",
-        "build:atom": "bash build-atom.sh",
-        "compile": "run-s build:index build:atom",
-        "watch": "npm-watch",
-        "start": "run-p watch serve"
-    },
-    "watch": {
-        "compile": {
-            "patterns": [
-                "src",
-                "*.sh",
-                "songs.txt"
-            ],
-            "extensions": "*"
-        }
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "npm-run-all2": "^8.0.4",
+    "npm-watch": "^0.13.0"
+  },
+  "scripts": {
+    "serve": "http-server dist",
+    "build:index": "bash build-index.sh",
+    "build:atom": "bash build-atom.sh",
+    "compile": "run-s build:index build:atom",
+    "watch": "npm-watch",
+    "start": "run-p watch serve"
+  },
+  "watch": {
+    "compile": {
+      "patterns": [
+        "src",
+        "*.sh",
+        "poems.txt"
+      ],
+      "extensions": "*"
     }
+  }
 }
