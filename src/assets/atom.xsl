@@ -17,15 +17,15 @@ version="1.0">
   <body style="writing-mode: vertical-rl;">
     <section>
       <header>
-      <h1>
-          <a>
-              <xsl:attribute name="href">
-                  <xsl:value-of select="atom:feed/atom:id" />
-              </xsl:attribute>
-              <xsl:value-of select="atom:feed/atom:title" />
-          </a>
-      </h1>
-      <p>Atom フィードを表示しています。</p>
+        <h1>
+            <a>
+                <xsl:attribute name="href">
+                    <xsl:value-of select="atom:feed/atom:id" />
+                </xsl:attribute>
+                <xsl:value-of select="atom:feed/atom:title" />
+            </a>
+        </h1>
+        <p>Atom フィードを表示しています。</p>
       </header>
       <xsl:for-each select="atom:feed/atom:entry">
           <article>

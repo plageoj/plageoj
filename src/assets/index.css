@@ -23,8 +23,12 @@ a {
   text-decoration: none;
 }
 
-header {
+section header {
   margin-left: 1rem;
+
+  p {
+    margin: 0 1rem;
+  }
 }
 
 main {
@@ -69,12 +73,9 @@ section {
   }
 }
 
-section {
-  writing-mode: vertical-rl;
-}
-
 article {
-  height: max(80%, 40rem);
+  height: max(90%, 50rem);
+  margin: 0 1rem;
   p {
     display: flex;
     height: 100%;
